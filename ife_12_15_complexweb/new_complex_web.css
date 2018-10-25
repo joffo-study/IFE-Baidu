@@ -1,0 +1,542 @@
+html,
+body,
+span,
+dl,
+dt,
+dd,
+i,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+nav,
+header,
+footer,
+ul,
+li,
+section,
+article,
+ol {
+    padding: 0;
+    margin: 0;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+body,
+html {
+    height: 100%;
+    width: 100%;
+}
+/*整体布局*/
+.container {
+    display: flex;
+    height: 100%;/*容器设置100%，在显示全高*/
+}
+.container .tools {
+    width: 100px;
+    background-color: #1d2530;
+    overflow: hidden;
+}
+.container .naviget {
+    width: 250px;
+    background-color: #222b3b;
+    overflow: hidden;
+}
+.container .content {
+    flex: 1;
+    overflow: hidden;
+}
+/*tools*/
+.tools .icon-plane::after {
+    background: url("images/Item1.png") no-repeat;
+}
+.tools .icon-reckot::after {
+    background: url("images/Item2.png") no-repeat;
+}
+.tools .icon-gamepad::after {
+    background: url("images/Item3.png") no-repeat;
+}
+.tools {
+    text-align: center;
+}
+.tools .icon {
+    position: relative;/*对应.dot的、里面的绝对定位*/
+    display: block;/*盒子才可以设置margin*/
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.tools .icon i {
+    position: relative;
+    display: inline-block;
+    height: 60px;/*插入背景，图片有尺寸，也要设置尺寸！*/
+    width: 60px;
+}
+.tools .icon i::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.icon.add i {
+    border: 3px solid #475364;
+    border-radius: 50%;
+    box-sizing: border-box;
+    font-size: 26px;
+    color: #475364;
+    line-height: 54px;/*tools设置了textalign：center，实现水平居中了*/
+    text-align: center;
+    cursor: pointer;
+}
+.dot::before {
+    display: block;
+    content: '';
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    margin: -2px 0px 0px -2px;
+    background: #259bf3;/*增加原点，颜色是设置背景*/ 
+    opacity: 0;
+}
+.dot.active::before,
+.dot:hover::before
+ {
+    opacity: 1;
+}
+.container .tools {
+    position: relative;
+}
+.tools .setting {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+}
+.tools .setting i {
+    color: #475364;
+    margin-right: 3px;
+    display: inline-block;
+    cursor: pointer;
+}
+.tools .setting i+i {
+    margin-left: 3px;
+}
+/*Naviget*/
+.badge {
+    color: #fff;
+    border-radius: 22px;
+    background: #259bf3; 
+    padding: 3px 8px;
+}
+.naviget {
+    box-sizing: border-box;
+    position: relative;
+}
+.naviget hr {
+    border-color: #5c687a;
+    width: 200px;
+    margin: 0 auto;
+}
+.naviget dl dt{
+    color: #5c687a;
+    margin-bottom: 15px;
+    font-size: 12px;
+}
+.naviget dl dd {
+    color: #bcc5d2;
+    margin-bottom: 10px;/*相对dd的内容区来看，这样.dot才在dd的垂直居中*/
+    font-size: 12px;
+    position: relative;/*用在.dot里面绝对定位*/
+}
+.naviget dl {
+    padding: 15px 20px 0px 30px;
+}
+.naviget dl .dot::before {
+    left: -30px;
+    top: 50%;
+}
+.naviget dl dd:hover,
+.naviget dl .active {
+    color: #fff;/*增加的原点在dd的内容区，左边是padding挡住*/
+}
+.naviget .wrap-scroll {
+    height: calc(100%-80px);
+}
+.naviget .badge {
+    margin-top: -2px;
+}
+.naviget .goal {
+    position: absolute;
+    bottom: 20px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: normal;
+    margin-left: 30px;
+}
+.goal h3 span {
+    font-weight: 200;
+}
+.goal progress {
+    margin-top: 15px;
+    height: 6px;
+    width: 200px;
+    border-radius: 5px;
+}
+.goal progress::-webkit-progress-bar {
+    background-color: #2d3848;
+}
+.goal progress::-webkit-progress-value {
+    background-color: #8768e5;
+    border-radius: 5px;
+}
+/*Content-header*/
+.text-blue {
+    color: #259bf3;
+}
+.text-gray {
+    color: #999;
+}
+.text-darkgray {
+    color: #666;
+}
+.content header {
+    height: 80px;
+    border-bottom: 1px solid #e6e9ec;
+}
+.content header h3 {
+    font-size: 30px;
+    line-height: 80px;
+    font-weight: normal;
+    padding-left: 20px;
+    display: inline;/*右边介绍才上去*/
+}
+.user-info {
+    margin-top: 20px;
+    width: 200px;/*没有width，设置.image relative后，宽度垮掉!*/
+}
+.user-info .text {
+    display: inline-block;/*设置行内块箭头才可以上去?????*/
+    padding: 6px 0px 0px 17px;
+}
+.user-info .text .text-gray {
+    font-size: 12px;
+    margin-top: 4px;
+}
+.user-info .fa {
+    margin: 15px 20px 0px;/*通过margin设置居中！*/
+}
+.user-info .image {
+    position: relative;
+}
+.user-info .image::before {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 5px;
+    width: 18px;
+    height: 18px;
+    right: 1px;
+    background: #fff;
+    border-radius: 50%;
+    z-index: 2;
+}
+.user-info .image::after {
+    content: '';
+    display: block;
+    width: 12px;
+    height: 12px;
+    box-sizing: border-box;
+    border: 3px solid #3ea66c;
+    border-radius: 50%;
+    position: absolute;
+    right: 3px;
+    bottom: 8px;
+    z-index: 3;
+}
+/*Content-aside*/
+.content aside {
+    width: 400px;
+    border-right: 1px solid #e6e9ec;
+    height: 100%;
+    overflow: hidden;/*要设置具体位置overflow才会起作用！??*/
+    position: absolute;/*设置位置下面的ul才会滑动*/
+    top: 80px;
+    left: 0;
+    bottom: 0;
+}
+aside form {
+    padding: 15px 30px;
+    position: relative;
+    border-bottom: 1px solid #e6e9ec;
+}
+aside form input {
+    width: 100%;
+    border: 1px solid #e6e9ec;
+    height: 30px;
+    padding-left: 20px;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+aside form .fa {
+    position: absolute;
+    top: 22px;
+    right: 42px;
+    color: #666;
+}
+.content aside .wrap-scroll {
+    overflow: auto;
+    width: 420px;
+    position: absolute;/*设置位置，才会auto*/
+    top: 61px;
+    left: 0;
+    bottom: 0;
+    padding-bottom: 150px;/*????*/
+    list-style: none;
+}
+.content {
+    position: relative;
+}
+aside .wrap-scroll::after {
+    content: "--It's over.--";
+    margin-top: 20px;
+    text-align: center;
+    display: block;
+    color: #666;
+    font-size: 14px;
+}
+aside .wrap-scroll li {
+    box-sizing: border-box;
+    padding: 15px 30px 20px;
+    border-bottom: 1px solid #e6e9ec;
+}
+.wrap-scroll .user-info {
+    width: 100%;
+}
+.wrap-scroll .user-info .time {
+    margin-top: 15px;
+    font-size: 14px;
+}
+.wrap-scroll li .msg {
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 20px;
+    margin-top: 10px;
+}
+.wrap-scroll li .notice {
+    padding-right: 40px;
+    position: relative;
+}
+.wrap-scroll .notice .badge {
+    position: absolute;
+    right: 0px;
+    top: 5px;
+    border-radius: 50%;
+    padding: 4px 10px;
+}
+/*Content-Section.dialogue*/
+.content .dialogue {
+    position: absolute;
+    top: 80px;
+    left: 400px;
+    right: 0;
+    bottom: 0px;
+    overflow: hidden;
+}
+.content .dialogue .wrap-scroll {
+    position: absolute;
+    top: 61px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    overflow: auto;
+    width: 200%;/*分数的尺寸不会看？？？？*/
+}
+.content .dialogue ul {
+    width: 50%;
+}
+.dialogue .title {
+    height: 60px;
+    padding: 0 20px;
+}
+.dialogue .target {
+    line-height: 60px;
+    display: inline-block;
+    position: relative;
+}
+.dialogue .target::after {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #3ea66c;
+    position: absolute;
+    margin-top: 28px;
+    right: -15px;
+}
+.dialogue .title .pull-right {
+    line-height: 60px;
+}
+.dialogue .pull-right i {
+    border: 1px solid #e6e9ec;
+    width: 38px;
+    height: 32px;
+    text-align: center;
+    line-height: 32px;
+    margin-left: -7px;
+    background: linear-gradient(to bottom right, #fdfdfe, #f4f5f8);
+    cursor: pointer;
+}
+.dialogue .pull-right a {
+    text-decoration: none;
+}
+.dialogue .title .btn-grounp {
+    display: inline-block;
+}
+.dialogue .title .page {
+    display: inline-block;
+    font-size: 14px;
+}
+.dialogue .btn-grounp a:first-child i {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+.dialogue .btn-grounp a:last-child i {
+    border-top-right-radius: 3px;
+    border-top-right-radius: 3px;
+}
+.dialogue .page a:first-child i {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+.dialogue .page a:first-child i {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+.dialogue .page::before {
+    content: '';
+    border-right: 1px solid #e6e9ec;
+    height: 30px;
+    display: inline-block;
+    position: relative;
+    top: 9px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.dialogue .wrap-scroll .item {
+    padding: 15px 25px 0px 30px;
+    list-style: none;
+}
+.dialogue .wrap-scroll .info p {
+    padding-top: 10px;
+   font-size: 14px;
+}
+.dialogue .wrap-scroll .info {
+    padding: 0px 0px 10px 20px;
+    overflow: hidden;/*要整个.info设置hidden，单独p设置，图片会包含进来！*/
+}
+.wrap-scroll .info .clock {
+    font-size: 15px;
+    color: #999;
+    padding-left: 10px;
+}
+.dialogue .wrap-scroll .separate {
+    width: 100%;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.wrap-scroll .separate .line {
+   height: 1px;
+   flex: 1;
+   background-color: #e6e9ec;
+}
+.wrap-scroll .separate .text {
+    font-size: 14px;
+    color: #999;
+    margin: 0 10px;
+}
+.wrap-scroll .unread .line {
+    background-color: #259bf3;
+}
+.wrap-scroll .unread .text {
+    font-size: 16px;
+    color: #259bf3;
+}
+.item .imgs {
+    margin-top: 15px;
+}
+.item .imgs .list {
+    width: 156px;
+    height: 100px;
+    display: inline-block;
+    position: relative;
+    margin-right: 10px;
+}
+.item .imgs .mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .5);
+    opacity: 0;
+}
+.item .mask .fa {
+    background: rgba(255, 255, 255, .5);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 50%;/*移动的距离相对整个父容器的大小百分比*/
+    left: 50%;
+    line-height: 50px;
+    text-align: center;
+    transform: translate(-50%,-50%);/*这个移动的距离百分比应该是自身大小的百分比*/
+}
+.imgs .list .mask:hover {
+    opacity: 1;
+}
+.dialogue .reply form {
+    position: relative;
+}
+.dialogue .reply input {
+    width: 100%;
+    box-sizing: border-box;/*没有设置的话，width就算100%，有padding也会超出！*/
+    height: 50px;
+    border-radius: 3px;
+    border: 1px solid #e6e9ec;
+    padding-left: 70px;
+    margin-bottom: 40px;
+}
+.dialogue .reply button {
+    position: absolute;
+    top: 0;
+    width: 58px;
+    height: 50px;
+    border-radius: 3px;
+    border: 1px solid #e6e9ec;
+    background: linear-gradient(to bottom right, #fdfdfe, #f5f6f9);
+}

@@ -3,9 +3,10 @@
     margin: 0;
     font-family: sans-serif;
 }
-body {
+html {
     width: 100%;
-    
+    height: 100%;
+    overflow-x: hidden;/*隐藏水平轴！！*/ 
 }
 .page1 {
     height: 650px;
@@ -243,7 +244,7 @@ body {
     
     text-align: center;
 }
-.page4 h1 {                  /*?????????????????*/
+.page4 h1 {                  /*?????????????????根本不居中*/
     text-align: left;
     margin: 47px auto;
     font-weight: 250;
@@ -316,24 +317,8 @@ hr {
 
 /*Page4 persons*/
 .person img {
-    width: 388px;
+    width: 360px;
     height: 280px;
-}
-.person img:nth-of-type(1),
-.person img:nth-of-type(2) {
-    margin-bottom: 25px;
-}
-.person img:nth-of-type(1),
-.person img:nth-of-type(3){
-    float: left;
-}
-.person img:nth-of-type(2),
-.person img:nth-of-type(3) {
-    float: right;
-}
-.person img:nth-of-type(3),
-.person img:nth-of-type(4) {
-    margin-bottom: 55px;
 }
 .persons h1 + p {
     margin: 0 auto;
@@ -348,9 +333,57 @@ hr {
     text-align: center;
     margin-bottom: 12px;
 }
+.person {/*？？？？？？？？？？？？？？？？？？/图片图标不居中*/
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.introDesc {
+    opacity: 0;
+    color: #fff;
+    width: 360px;
+    height: 280px;
+    position: absolute;/*父元素使用relative，子元素使用absolute，实现字体在图片上！！！！*/
+    top: 0;
+    text-align: center;
+    background: rgba(0, 0, 0, .65);
+}
+.introDesc:hover {/*实现鼠标悬浮有字样显示！！！！*/
+    opacity: 1;
+}
+.introDesc h3 {
+    font-size: 20px;
+    margin-top: 20%;
+}
+.introDesc p {
+    font-size: 13px;
+    color: #98918e;
+    letter-spacing: 2px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+.introDesc i {/*选择器优先级，比这个比.iconfont的高！！！设置i可以设置图标的具体大小*/
+    border: 1px solid #767776;
+    padding: 15px 15px;
+    border-radius: 50%;/*这样设置边框为圆形！！*/
+    font-size: 18px;
+    margin: 0 15px;
+}
+
+/*
+.person img:nth-of-type(1),
+.person img:nth-of-type(2) {
+    margin-bottom: 25px;
+}
+
+.person img:nth-of-type(3),
+.person img:nth-of-type(4) {
+    margin-bottom: 55px;
+}
+
 .person img:hover {
     color: linear-gradient(to bottom, rgba(2, 2, 2, 0.6), rgba(2, 2, 2, .6));
-}
+}*/
 
 /*Page4 contact*/
 .contact .conForm {
@@ -439,9 +472,9 @@ hr {
   }
 .iconfont{/*设置引入的图标样式，和字体一样设置！！*/
     font-family:"iconfont" !important;
-    font-size:28px;
+    font-size:20px;
     font-style:normal;
-    padding-right: 6px;
+    padding-right: 15px;
     float: left;/*图标浮动和p在同一行！*/
 }
 
@@ -479,5 +512,11 @@ hr {
     padding-bottom: 16px;
     font-weight: 300;
 }
-
+.icon {
+    margin-top: 12px;
+}
+.icon i {/*单独为iconfont设置样式！！*/
+    font-size: 16px;
+    color: #767776;
+}
 

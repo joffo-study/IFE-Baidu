@@ -1,51 +1,578 @@
-*{
-    margin: 0;
-    height: 100%;
-    width: 100%;
+html,
+body,
+span,
+dl,
+dt,
+dd,
+i,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+nav,
+header,
+footer,
+ul,
+li,
+section,
+article,
+ol {
     padding: 0;
+    margin: 0;
 }
-.container {
-    width: 100%;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+body,
+html {
     height: 100%;
-    margin: 0;
-    padding: 0;
+    width: 100%;
+}
+/*Layout*/
+.container {
+    height: 100%;
     display: flex;
 }
-.tools {
+.container .tools {
     width: 100px;
-    /*position: relative;*/
-    background-color: #003;
+    position: relative;
+    background: #1d2531;
 }
-.navbar {
-    width: 200px;
-    background-color: #006;
+.container .navbar {
+    width: 252px;
+    background: #222b3c;
 }
-.content {
+.container .content {
     flex: 1;
-    background-color: gray;
+    position: relative;
 }
 /*Tools*/
-.icon img{
-    width: 70px;
-    height: 70px;
-    margin: 14px 15px;
+.icon-plane {
+    background: linear-gradient(to bottom right, #2ca0f7, #1e95ed);
 }
-.settings {
-    width: 20px;
-    height: 20px;
+.icon-plane::after {
+    background: url("images/Item1.png") no-repeat;
+}
+.icon-rocket {
+    background: linear-gradient(to bottom right, #9888e4, #8260e6);
+}
+
+.icon-rocket::after {
+    background: url("images/Item2.png") no-repeat;
+}
+
+.icon-gamepad {
+    background: linear-gradient(to bottom right, #ef4e32, #cf2b0e);
+}
+
+.icon-gamepad::after {
+    background: url('images/Item3.png') no-repeat;
+}
+.tools .icon {
+    display: block;
+    position: relative;
+    margin-top: 20px;
+    text-align: center; 
+}
+.tools .icon i {
+    display: inline-block;/*？？？？？i元素是行内元素，有这个才可以显示图标？*/
+    position: relative;/*！！子元素：after设置为absolute，背景图才会显示！！*/
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+.dot::before {
+    position: absolute;/*父元素相对，子元素绝对，对点进行定位！*/
+    top: 50%;
+    left: 0;
+    content: '';/*要增加东西的话，需要content！！！*/
+    width: 4px;
+    height: 4px;
+    margin: -2px 0px 0px -2px;
+    background: #2ca0f7;
+    border-radius: 50%;
+    opacity: 0;
+}
+.dot.active::before,
+.dot:hover::before {
+    opacity: 1;
+}
+.add i {
+    border-radius: 50%;
+    border: 3px  solid;
+    color: #2d3848;
+    font-size: 26px;
+    box-sizing: border-box;/*这样设置，使得边框的增加不会影响总体宽度！！*/
+    cursor: pointer;/*鼠标设置为手！！*/
+    line-height: 54px;/*设置行高实现垂直居中60-3*2=54，54是内容的实际高度！！*/
+}
+.icon i::after {/*i标签要增加content才可以显示增加的background*/
+    position: absolute;
+    content: '';
+    left: 0;
+    right: 0;
+    top: 0;
+     bottom: 0;
+}
+.tools .setting {
     position: absolute;
     bottom: 10px;
     left: 0;
     right: 0;
     text-align: center;
     color: #475364;
-    
 }
-.settings .set1 {
+.tools .setting i {
     padding: 2px 3px;
     cursor: pointer;
-}
-.settings .set2 {
-    margin-left: 4px;
     font-size: 17px;
 }
+.tools .setting i+i {
+    margin-left: 4px;
+}
+/*Navbar*/
+.badge {
+    font-size: 12px;
+    color: #fff;
+    padding: 3px 8px;
+    background: linear-gradient(to bottom right, #2b9ff7, #1f95ff);
+    border-radius: 22px;
+}
+.navbar {
+    box-sizing: border-box;
+    overflow: hidden;/*这样，可以将原点的左边的一半隐藏！！！*/
+    height: 100%;
+}
+.navbar .scroll-wrap {
+    height: calc(100% - 80px);/*!!!!!?*/
+}
+.navbar .scroll-wrap hr {
+    margin: 0px 26px;/*????????????????*/
+    width: 190px;
+    border-color:  #475364;
+}
+.navbar dl,
+.navbar dd {
+    margin: 0;
+    padding: 0;
+}
+.navbar dl {
+    font-size: 12px;
+    margin-top: 20px;
+    margin-left: 30px;/*整体缩进30px,.dot*/
+}
+.navbar dt {
+    margin-bottom: 17px;
+    color: #475364;
+}
+.navbar dl dd {
+    margin-bottom: 10px;
+    color: #b7c0cd;
+    cursor: pointer;
+    position: relative;
+}
+.navbar dl .pull-right {
+    margin-right: 20px;
+    margin-top: -1px;
+}
+.navbar dl dd.active,
+.navbar dl dd:hover {
+    color: #fff;
+}
+.navbar dl dd:hover::before,/*??????????为什么不直接.dot？？？？不都不是一个东西！！/*/
+.navbar dl dd.active::before {
+    left: -30px;
+}
+/*Navbar-goal*/
+
+.navbar .goal {
+    font-size: 14px;
+    text-align: center;
+    color: #fff;
+    padding-bottom: 10px;
+}
+.goal h3 {
+    font-size: 14px;
+    padding-left: 20px;
+    margin-bottom: 8px;
+}
+.navbar .goal h3 span {
+    font-weight: 100;
+}
+.navbar .goal progress {
+    height: 6px;
+    border: 1px solid #222b3c;
+    width: 200px;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+.navbar .goal progress::-webkit-progress-value {
+    border-radius: 5px;
+    background: #8768e5;
+}
+.navbar .goal progress::-webkit-progress-bar {
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
+    background: #2d3848;
+}
+/*Content*/
+/*Content-head*/
+.text-blue {  /*公用的！！放在最前面！直接类名字*/
+    color: #2399f1;
+}
+.text-gray {
+    color: #999;
+}
+.text-darkgray {
+    color: #666;
+} 
+.content header {
+    height: 80px;
+    border-bottom: 1px solid #e6e9ec;
+}
+.content header h3 {
+    display: inline-block;/*设置内联！！*/
+    font-size: 24px;
+    font-weight: normal;
+    padding-left: 20px;
+    line-height: 80px;
+}
+.content .user-info {
+    width: 200px;
+    margin-top: 16px;
+}
+.user-info .text p {
+    font-size: 13px;
+    margin-top: 4px;
+}
+.user-info .img {/*图片的容器是.img*//*这个user中的.img专为header中的*/
+    position: relative;
+}
+.user-info .img::before {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 5px;
+    width: 18px;
+    height: 18px;
+    right: 1px;
+    background: #fff;
+    border-radius: 50%;
+    z-index: 2;
+}
+.content>header .user-info .img::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 8px;
+    right: 3px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    z-index: 3;
+    background: #fff;
+    box-sizing: border-box;
+    border: 3px solid #38a76a;
+}
+.user-info .text {/*像这种公用的，前面限制不要多，就用公用容器就可以！！*/
+    padding: 6px 0px 0px 15px;
+    display: inline-block;
+    display: inline-block;
+}
+.user-info .fa {
+    margin: 15px 20px 0px;/*怎么看的？？？*/
+}
+/*Content-Aside*/
+.content aside {
+    position: absolute;/*在这里设置content里面的两个布局！！！！！*/
+    top: 80px;
+    left: 0;
+    bottom: 0;
+    width: 400px;
+    border-right: 1px solid #e6e9ec;
+    /*float: left;*/
+    overflow: hidden;
+}
+.content aside .search-form {
+    padding: 15px 30px;
+    position: relative;
+    
+    border-bottom: 1px solid #e6e9ec;
+}
+aside .search-form input {/*-*/
+    width: 100%;/*在form中设置了padding，里面的width就可以不用自己去设置值那么麻烦，直接100%*/
+    padding-left: 10px;
+    height: 30px;
+    border-radius: 3px;
+    box-sizing: border-box;/*将搜索框宽度设置为计算了padding*/
+    border: 1px solid #e6e9ec;
+}
+aside .search-form .fa {/*-*/
+    position: absolute;
+    top: 21px;
+    right: 39px;
+    color: #999;
+    cursor: pointer;
+}
+.content .scroll-wrap {
+    position: absolute;
+    width: 420px;/*?!!!!!width设置得大20px，隐藏进度条！！！！！/*/
+    top: 61px;/*搜索框高60px，*/
+    left: 0;
+    bottom: 0;
+    padding-bottom: 50px;
+    overflow: auto;
+    list-style: none;
+}
+.content aside .scroll-wrap::after {/*类名用的aside-*/
+    content: "--It's over.--";
+    margin-top: 20px;
+    display: block;
+    font-size: 14px;
+    color: #666; 
+    text-align: center;
+}
+.content .scroll-wrap .item {/*-*/
+    padding: 15px 30px 20px;
+    width: 400px;
+    box-sizing: border-box;
+}
+aside .scroll-wrap .item {
+    border-left: 3px solid #fff;/*虽然感觉可以没有*/
+    border-bottom: 1px solid #e6e9ec;
+}
+aside .scroll-wrap .item:hover,/*-*/
+aside .scroll-wrap .item.current {
+    border-left: 3px solid #1e95ed;
+}
+aside .item .user-info {
+    width: 100%;
+}
+aside .item .time {
+    margin-top: 16px;/*和userinfo的margintop一样的！*/
+    font-size: 12px;
+}
+aside .user-info .text-blue {
+    position: relative;
+    padding-left: 12px;
+}
+aside .user-info .text-blue:before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #2399f1;
+}
+aside .item .msg {
+    margin-top: 6px;
+    font-size: 12px;
+    line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+aside .item .notice {
+    position: relative;
+    padding-right: 30px;
+}
+aside .item .notice .badge {
+    position: absolute;
+    right: 0;
+    top: 6px;
+    padding: 2px 9px;/*这里设置padding，是因为，圆圈是遍的！*/
+}
+/*Centen-dialogue*/
+.content .dialogue {
+    position: absolute;
+    top: 80px;
+    left: 400px;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+.content .dialogue .title {
+    height: 61px;
+    line-height: 61px;
+    border-bottom: 1px solid #e6e9ec;
+    box-sizing: border-box;
+}
+.dialogue .title .target {
+    padding-left: 20px;
+}
+.dialogue .title .target::after {
+    position: relative;
+    left: 8px;
+    top: -2px;/*圆点偏上一点点，没有居中！*/
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #38a76a;
+    display: inline-block;/*一定要有！！！，不然不显示！！！*/
+}
+.dialogue .title .pull-right {
+    margin-right: 20px;
+}
+.dialogue .title .btn-group {
+    display: inline-block;
+    font-size: 0px;
+}
+.dialogue .btn-group a {
+    text-decoration: none;
+}
+.dialogue .btn-group .fa {
+    display: inline-block;
+    width: 38px;
+    height: 32px;
+    line-height: 32px;
+    color: #999;
+    text-align: center;
+    font-size: 15px;
+    box-sizing: border-box;
+    background: linear-gradient(to bottom right, #fefefe, #f4f5f8);
+    border: 1px solid #e6e9ec;
+    margin-left: -1px;
+}
+.dialogue .btn-group a:first-child .fa {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+.dialogue .btn-group a:last-child .fa {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+.dialogue .title .page::before {
+    content: '';
+    border-right: 1px solid #e6e9ec;
+    width: 1px;
+    margin-left: 20px;
+    margin-right: 20px;
+    position: relative;
+    height: 28px;
+    top: 8px;
+    display: inline-block;
+}
+.dialogue .title .page {
+    display: inline-block;/*!!!!!!!!!!!!!!!!!没有它，page在下一行，不知道怎样才要加呢？？？？？？？*/
+    font-size: 14px;
+}
+.content .dialogue .scroll-wrap {
+    width: 200%;/*大小不严格，只要把进度条隐藏就好*/
+}
+.dialogue .scroll-wrap .item {
+    width: 50%;/*????????????*/
+    padding-right: 20px;
+    padding-bottom: 10px;
+}
+.scroll-wrap .item .info-text {
+    padding: 0px 0px 0px 20px;   
+    overflow: hidden;/*可以将段落多出来左边不整齐的地方，变整齐！！！！BFC！！！*/
+}
+.item .info-text .time {
+    margin-left: 6px;
+    font-size: 15px;
+}
+.item .info-text .info {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 14px;
+}
+.item .info-text .imgs {
+    margin-top: 10px;
+}
+.info-text .imgs .list {
+    position: relative;
+    display: inline-block;
+    width: 156px;
+    height: 100px;
+    margin-right: 10px;
+    cursor: pointer;
+    /*overflow: hidden;*/
+}
+.imgs .list .mask {
+    position: absolute;/*这个位置，是看父元素是relative上，来定位的！*/
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);/*用div包住i是为了设置背景！*/
+    transition: opacity 0.3s;
+    opacity: 0;
+}
+.imgs .list:hover .mask {
+    opacity: 1;
+}
+.imgs .list .mask .fa {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    transform: translate(-50%, -50%);/*??????!!!!*/
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+}
+/*.info-text .imgs img {
+    height: 100%;
+}*/
+.dialogue .scroll-wrap .line {
+    border-bottom: 1px solid #e6e9ec;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.scroll-wrap .line span {
+    position: relative;
+    left: 25%;
+    transform: translateX(-50%);
+    top: 10px;
+    padding: 0 16px;
+    background: #fff;/*将背景变成白色，才会有左右没有线的感觉！！*/
+    display: inline-block;/*没有这个，字不居中？？？？？？？*/
+}
+.dialogue .scroll-wrap .line.unread {
+    color: #2399f1;
+    border-color: #2399f1;
+}
+.dialogue .scroll-wrap .reply {
+    position: relative;
+}
+.scroll-wrap .reply input {
+    width: 100%;
+    height: 50px;
+    padding-left: 80px;
+    border: 1px solid #e6e9ec;
+    box-sizing: border-box;/*????????*/
+    border-radius: 3px;
+}
+.scroll-wrap .reply button {
+    position: absolute;
+    height: 50px;
+    width: 58px;
+    left: 30px;
+    top: 15px;
+    /*box-sizing: border-box;*/
+    border-radius: 3px;
+    background: linear-gradient(to bottom right, #fefefe, #f4f5f8);
+    border: 1px solid #e6e9ec;
+}
+

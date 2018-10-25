@@ -1,0 +1,138 @@
+*{
+    margin: 0;
+}
+html{
+    margin: 0;
+    font-size: 10px;
+    font-family: sans-serif;
+}
+
+header{
+    width: 100%;
+    background: black;
+    height: 80px;
+}
+.head{
+    margin: 0 auto;
+    width: 960px;
+    height: 100%;   
+}
+.logo{
+    color: white;
+    font-size: 3em;
+    float: left;
+    line-height: 80px;
+}
+.logo + div a{
+    color: white;
+    font-size: 1.7em; 
+}
+
+.logo + div{
+    float: right;
+    margin-top: .5em;
+}
+
+.banner{
+    width: 100%;
+    background: green;
+    height: 25em;   
+}
+
+.banner ul li{
+    padding:0;/*清除列表默认样式*/
+    margin:0;
+    list-style:none;
+
+    color: gray;
+    font-size: 2em;
+    border: 1px black solid;
+    padding: .5em;
+   
+
+    margin-right: 1em;
+    background: lightgreen;
+    float: left;
+}
+.banner div{
+  
+    width: 960px;
+    margin: 0 auto;
+    position: relative;
+    top: 20em;
+    left: 730px;
+    text-align: right;/*无效*/
+}
+.banner .active{
+    padding-top: 1em;
+    background: white;
+}
+
+nav{
+    height: 6em;
+    margin: 0 ;
+    border-bottom: 1px gray solid;
+}
+
+nav div ul{
+    padding: 0;
+    margin: 0 auto;
+    list-style: none;
+
+    width: 960px;
+    position: relative;
+    top: 2em;
+}
+nav li{
+    font-size: 2em;
+    float: left;
+    border-top: 1px gray solid;
+    border-left: 1px gray solid;
+    border-right: 1px gray solid;
+    padding: .5em 1.1em;
+   
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    text-align: center;
+    background: lightgray;
+    
+}
+nav .active{
+    background: white;
+    border-bottom: white;    /*设置白色底线，视觉是以为没有设置底线！*/
+}
+
+
+main{
+    width: 960px;
+    margin: 0 auto;
+}
+main section{
+    display: flex;
+    width: 100%;
+}
+main div{
+    border: 1px gray solid;
+    padding: 60px;
+    margin: 5px;
+    text-align: center;
+}
+main div:nth-of-type(1){
+    flex: 1;
+}
+main div:nth-of-type(2){
+    flex: 1;
+}
+main div:nth-of-type(3){
+    flex: 1;
+}
+
+footer{
+    width: 100%;
+    background: gray;
+    height: 10em;
+    font-size: 1.8em;
+    color: white;
+    text-align: center;
+    padding-top: 1em;
+}

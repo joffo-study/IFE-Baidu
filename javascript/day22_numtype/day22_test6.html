@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>zhan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+        <input id="stack-input" type="text">
+        <p id="stack-cont">栈内容：apple&lt;-pear</p>    <!--栈内容：apple-&gt;pear-->
+    <div id="btn-group">
+        <button id="push-btn" data-value="push">进栈</button>
+        <button id="pop-btn" data-value="pop">退栈</button>
+        <button id="font-btn" data-value="font">打印栈顶元素内容</button>
+        <button id="empty-btn" data-value="empty">判断栈是否为空</button>
+        <p id="result"></p>
+    </div>
+        
+        <script>
+        
+        var stack = ["apple", "pear"];
+        var input = document.querySelector("#stack-input");
+        var cont = document.querySelector("#stack-cont");
+        var btn = document.querySelector("#btn-group");
+        var res = document.querySelector("#result");
+        btn.onclick = function (e) {
+            var tar = e.target.dataset.value;
+            if(tar){
+                add[tar]();
+            }
+        }
+//推入数据,带推入参数;推出,带变量赋值推出的值;join()使用后变字符串,带变量赋值
+        var add = {
+            push: function() {
+                console.log(input.value);
+                if(input.value){
+                    stack.push(input.value);//stack.unshift(input.value);
+                    var b = stack.join("<-");//var b = stack.join("->");//stack = stack.join("->"); 错
+                    //console.log(typeof b);
+                    cont.innerHTML = b;
+                }
+            },
+            pop: function () {
+                console.log(stack.length);
+                if(stack.length){
+                    var a= stack.pop();//var a = stack.shift();
+                    cont.innerHTML = stack.join("<-");//cont.innerHTML = stack.join("->");
+                }
+            },
+            font: function() {
+                res.innerHTML = stack[0];//res.innerHTML = stack[stack.length-1];
+            },
+            empty: function() {
+                if(stack.length){
+                    res.innerHTML = "no null!";
+                }else {
+                    res.innerHTML = "is null!";
+                }
+            }
+        }
+        </script>
+</body>
+</html>

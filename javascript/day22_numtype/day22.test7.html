@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>paixu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <script>
+         var arr = [43, 54, 4, -4, 84, 100, 58, 27, 140];
+         function compare1 (value1, value2){
+             return value1 - value2;//从小到大,正数,第一个数掉到第二个数后面
+         } 
+         function compare2(value1, value2){
+             return value2-value1;//从大到小
+         }
+         console.log(arr.sort(compare1));
+         console.log(arr.sort(compare2));
+         //console.log(arr.reverse());
+
+         var arr2 = ['apple', 'dog', 'cat', 'car', 'zoo', 'orange', 'airplane'];
+         console.log(arr2.sort());//字符串默认升序
+         console.log(arr2.reverse());
+
+         var arr3 = [[10, 14], [16, 60], [7, 44], [26, 35], [22, 63]];
+         function compare3(a, b) {
+             return b[1] - a[1];
+         }
+         console.log(arr3.sort(compare3));
+
+        var arr4 = [
+    {
+        id: 1,
+        name: 'candy',
+        value: 40
+    }, {
+        id: 2,
+        name: 'Simon',
+        value: 50
+    }, {
+        id: 3,
+        name: 'Tony',
+        value: 45
+    }, {
+        id: 4,
+        name: 'Annie',
+        value: 60
+    }
+];
+/*function compare4(a, b){
+    return a.value - b.value;
+}
+console.log(arr4.sort(compare4));*/
+var res4 = arr4.sort((a,b)=>{//使用箭头函数,简短函数
+    return a.value - b.value;
+});
+console.log(res4);
+
+
+    </script>
+   
+    
+</body>
+</html>

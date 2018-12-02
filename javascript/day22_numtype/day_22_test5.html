@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>22test5</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+        <input id="queue-input" type="text">
+        <p id="queue-cont">队列内容：apple&lt;-pear</p>    <!--队列内容：apple-&gt;pear-->
+    <div id="btn-group">
+        <button id="in-btn" data-type="in">入队</button>
+        <button id="out-btn" data-type="out">出队</button>
+        <button id="font-btn" data-type="font">打印队头元素内容</button>
+        <button id="empty-btn" data-type="empty">判断队列是否为空</button>
+    </div>
+        <script>
+        var queue = ["apple", "pear"];
+        var input = document.querySelector("#queue-input");
+        var res = document.getElementById("queue-cont");
+        var btn = document.getElementById("btn-group");
+        btn.onclick = function (e) {
+            //e.stopPropagation();
+            var type = e.target.dataset.type;
+            if(type){
+                add[type]();//带()参数才是调用对象里面的函数
+            }
+        }
+        var add = {
+            in: function() {
+                if(input.value){
+                    //queue.unshift(input.value);
+                    queue.push(input.value);
+                    res.innerHTML = queue.join("<-");
+                }
+            },
+            out: function() { 
+                if(queue.length){
+                    //queue.pop();
+                    var item = queue.shift();
+                    res.innerHTML = queue.join("<-");
+                }
+            },
+            font: function() {
+                console.log(queue[0]);//queue.length-1
+            },
+            empty: function() {
+                if(queue.length) {
+                    console.log("队列不为空!");
+                }else {
+                    console.log("队列为空!");
+                }
+            }
+        }
+        
+        </script>
+</body>
+</html>

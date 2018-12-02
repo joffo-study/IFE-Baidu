@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>event4</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+</head>
+<body>
+    <div id="fade-obj" style="width:300px;height:300px;background:#000"></div>
+    <button id="fade-btn">淡出</button>
+    <script>
+        var obj = document.querySelector("#fade-obj");
+        var btn = document.getElementById("fade-btn");
+        var timer;
+    btn.onclick = function () {
+        btn.disabled = true;
+        var text = this.innerHTML;
+        console.log(text);
+        clearInterval(timer);//没有不影响效果
+        if(text == '淡出'){
+            obj.style.opacity = 1;
+            timer = setInterval(fadeOut, 100);
+            
+        }else {
+            obj.style.opacity = 0;
+            timer = setInterval(fadeIn, 100);
+        }
+    }
+    function fadeOut() {
+        var opacity1 = obj.style.opacity;
+        if(opacity1 > 0) {
+            obj.style.opacity -= 0.05;//该变样式，重新使用dom来改变   
+        }else {
+            clearInterval(timer);
+            btn.disabled = false;
+            btn.innerHTML = '淡入';
+        }
+    }
+    function fadeIn() {
+        var opacity1 = parseFloat(obj.style.opacity);
+        if(opacity1 < 1) {
+            obj.style.opacity = opacity1 + 0.05;
+        }else {
+            clearInterval(timer);
+            btn.disabled = false;
+            btn.innerHTML = '淡出';
+        }
+    }
+    
+    </script>
+</body>
+</html>

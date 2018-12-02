@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>day22_test2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+        <div>
+                <label>String A:
+                    <input id="radio-a" type="radio" checked="true" name="str-obj" value="a">
+                </label>
+                <textarea id="str-a"></textarea>
+                <label>String B:
+                    <input id="radio-b" type="radio" name="str-obj" value="b">
+                </label>
+                <textarea id="str-b"></textarea>        
+                <label>Num A：<input id="num-a" type="number" value="0"></label>
+                <label>Num B：<input id="num-b" type="number" value="1"></label>
+            </div>
+            <div id="btn-group">
+                <button data-type="getlength" >获取当前选中输入的内容长度</button>
+                <button data-type="getThird" >当前选中输入中的第3个字符</button>
+                <button data-type="concat">把两个输入框的文字连接在一起输出（concat）</button>
+                <button>输入B中的内容，在输入A的内容中第一次出现的位置（indexOf）</button>
+                <button>输入A中的内容，在输入B的内容中最后一次出现的位置（lastIndexOf）</button>
+                <button data-type="getslice">使用slice获取选中输入框内容的部分内容，参数为num-a及num-b</button>
+                <button>当前选中输入框的行数</button>
+                <button>使用substr获取选中输入框内容的子字符串，参数为num-a及num-b</button>
+                <button>把所选输入框中的内容全部转为大写</button>
+                <button>把所选输入框中的内容全部转为小写</button>
+                <button>把所选输入框中内容的半角空格全部去除</button>
+                <button>把所选输入框中内容的a全部替换成另外一个输入框中的内容</button>
+            </div>
+            <p id="result"></p>   
+            <script>
+                function getCheck() {
+                var list = document.getElementsByName("str-obj");
+                for(var i=0; i<list.length; i++) {
+                    if(list[i].checked){
+                        var tar = "str-" + list[i].value;
+                    }
+                }
+                return document.getElementById(tar);
+            }
+
+            var btn = document.getElementById("btn-group");
+            btn.onclick = function (e) {
+                var type = e.target.dataset.type;
+                if(type) {
+                    var a = document.getElementById("num-a").value;
+                    var b = document.getElementById("num-b").value;
+                    var res  = add[type](a,b);
+                }
+                document.getElementById("result").innerHTML = res;
+            }
+            var add = {
+                getlength: function() {
+                    return getCheck().value.length;
+                },
+                getThird: function() {
+                    return getCheck().value.charAt(2);
+                },
+                concat: function() {
+                    return document.getElementById("str-a").value.concat(document.getElementById("str-b").value);
+                },
+                getslice: function(numa, numb) {
+                    return getCheck().value.slice(numa, numb);
+                }
+            }
+
+
+                /*
+            var ra = document.querySelector("#radio-a");
+            var rb = document.querySelector("#radio-b");
+            var stra = document.querySelector("#str-a");
+            var strb = document.querySelector("#str-b");
+            var numa = document.querySelector("#num-a");
+            var numb = document.querySelector("#num-b");
+
+            var list = document.querySelectorAll("button");
+            var res = document.querySelector("#result");
+            
+            list[0].onclick = function () {
+                if(ra.checked){
+                    res.innerHTML = stra.value.length;
+                    //console.log(stra.value.length);
+                }else if(rb.checked) {
+                    res.innerHTML = strb.value.length;
+                    
+                }
+            }
+            list[1].onclick = function () {
+                if(ra.checked){
+                    res.innerHTML = stra.value.charAt(3);//从0的字符位置
+                }else if(rb.checked) {
+                    res.innerHTML = strb.value.charAt(3);
+                }
+            }
+            list[2].onclick = function () {
+                res.innerHTML = stra.value.concat(strb.value);
+            }
+            list[3].onclick = function () {
+                var position = stra.value.indexOf(strb.value);
+                if(position<0) {
+                    res.innerHTML = "no this char";
+                }else {
+                    res.innerHTML = position;
+                }
+            }
+            list[4].onclick = function () {
+                var position = strb.value.lastIndexOf(stra.value);
+                console.log(strb.value.lastIndexOf(stra.value));
+                if(position<0) {
+                    res.innerHTML = "no this char";
+                }else {
+                    res.innerHTML = position;
+                }
+            }
+            list[5].onclick = function () {
+                if(ra.checked) {
+                    console.log(numa.value);
+                    console.log(numb.value);
+                    res.innerHTML = stra.value.slice(numa.value, numb.value);
+                }else if (rb.checked) {
+                    res.innerHTML = strb.value.slice(numa.value, numb.value);
+                }
+            }
+            list[6].onclick = function () {
+                if(ra.checked) {
+                    res.innerHTML = stra.value.rows;
+                }else if (rb.checked) {
+                    res.innerHTML = strb.value.rows;
+                }
+            }
+            list[7].onclick = function () {
+                if(ra.checked) {
+                    res.innerHTML = stra.value.substr(numa.value, numb.value);
+                }else if (rb.checked) {
+                    res.innerHTML = strb.value.substr(numa.value, numb.value);
+                }
+            }
+            list[8].onclick = function () {
+                if(ra.checked) {
+                    res.innerHTML = stra.value.toUpperCase();
+                }else if(rb.checked) {
+                    res.innerHTML = strb.value.toUpperCase();
+                }
+            }
+            list[9].onclick = function () {
+                if(ra.checked) {
+                    res.innerHTML = stra.value.toLocaleLowerCase();
+                }else if(rb.checked) {
+                    res.innerHTML = strb.value.toLocaleLowerCase();
+                }
+            }
+            list[10].onclick =function () {
+                if(ra.checked) {
+                    res.innerHTML = stra.value.split(" ").join("");
+                }else if(rb.checked) {
+                    res.innerHTML = strb.value.split(" ").join("");
+                }
+            }
+            list[11].onclick =function () {
+                if(ra.checked) {
+                    res.innerHTML = stra.value.replace(/a/g, strb.value);//若replace第一个参数不使用正则表达式，只改变替换第一个a
+                }else if(rb.checked) {
+                    res.innerHTML = strb.value.replace(/a/g, stra.value);
+                }
+            }*/
+            
+
+
+            </script>
+
+</body>
+</html>

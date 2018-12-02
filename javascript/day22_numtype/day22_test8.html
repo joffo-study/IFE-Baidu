@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>数据转换</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <script>
+        var scoreObject = {
+    "Tony": {
+        "Math": 95,
+        "English": 79,
+        "Music": 68
+    }, 
+    "Simon": {
+        "Math": 100,
+        "English": 95,
+        "Music": 98
+    }, 
+    "Annie": {
+        "Math": 54,
+        "English": 65,
+        "Music": 88
+    }
+}
+function ObjToArr(obj) {
+    var arr = [];
+    var temp;
+    for(var key in obj){
+        temp = [];
+        temp.push(key);
+        for(var course in obj[key]){
+            temp.push(obj[key][course]);
+        }
+        arr.push(temp);
+    }
+    return arr;
+}
+var res = ObjToArr(scoreObject);
+console.log(res);
+
+
+    </script>
+</body>
+</html>

@@ -3,7 +3,7 @@ function filterData() {
         return checkType.region.indexOf(item.region)!==-1 && (checkType.product.indexOf(item.product)!==-1);
     });
 }
-
+//sourceData过滤,里面的函数设置过滤条件,返回过滤后对象,里面函数item是对象里面数组
 
 function rendTable(data){
     //console.log(data);
@@ -47,7 +47,6 @@ if(rarr>=1 && parr===1){
         /*data.sort(function(a, b){
             return a.product>b.product? 1:-1;
         });*/
-       // console.log(data);
         var flag = data[0].product;
         var count =0;
         for(var i=0; i<data.length; i++){

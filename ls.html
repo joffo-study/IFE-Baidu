@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>LocalStorage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <p >result:</p>
+    <P id="show"></P>
+<form action="" method="POST">
+    <input  type="text" id="in1">
+    <button type="submit" onclick="store(e);" id="sub">确定</button>
+    <button type="reset" >取消</button>
+</form>
+<form action="" method="POST" id="form1">
+        <input value="13" type="text" id="in2">
+        <button type="submit" onclick="store(e)" id="sub">确定</button>
+        <button type="reset" >取消</button>
+</form>
+    <script>
+    //var in1 = document.querySelector("#in1");
+    //var in2 = document.querySelector("#in2");
+    //var sub = document.querySelector("#sub");
+    var p = document.querySelector("#show");
+
+    var input = document.querySelectorAll("input");
+    var len = document.querySelectorAll("input").length;
+    console.log(len);
+    //console.log(input[0].value);
+    //console.log(input[1].value);
+    localStorage.sre = [];
+    function store(e) {
+       console.log(e.target.value);
+         document.getElementById("form1").submit();
+         
+    
+    }
+    
+    </script>
+</body>
+</html>
